@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Volunteer Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', 'Montserrat', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: #3B82F6;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #3B82F6;
+    }
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .volunteer-hub-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 4.5rem; /* fallback for text-7xl */
+      letter-spacing: -1px;
+    }
+  </style>
+</head>
+<body class="bg-gray-500" >
+
+  <!-- Navbar -->
+  <nav class="w-full bg-white shadow-md">
+    <div class="bg-blue-400 text-white text-center py-4 font-extrabold volunteer-hub-title">
+      Volunteer Hub 
+    </div>
+    <div class="flex justify-between items-center px-8 py-4 bg-white">
+      <div class="flex space-x-8">
+        <a href="{{ url_for('home') }}" class="nav-link text-gray-800 hover:text-blue-600 font-medium text-lg">Home</a>
+        <a href="{{ url_for('about') }}" class="nav-link text-gray-800 hover:text-blue-600 font-medium text-lg">About</a>
+      </div>
+      <!-- User Avatar Dropdown -->
+      <div class="relative" id="userDropdown">
+        <button class="flex items-center space-x-2 text-gray-800 hover:text-blue-600 focus:outline-none" id="userMenuButton">
+          <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
+            <span id="userInitial">{{ user_initial }}</span>
+          </div>
+          <span id="userEmail" class="font-medium">{{ user_email }}</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <!-- Dropdown Menu -->
+        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden" id="dropdownMenu">
+          <a href="{{ url_for('profile') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Profile</a>
+          <a href="{{ url_for('settings') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Settings</a>
+          <a href="{{ url_for('login') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50" id="logoutButton">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col lg:flex-row items-center justify-between px-10 lg:px-24 py-10">
+    <!-- Text Content -->
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-10">
+        Welcome to Volunteer Hub
+      </h1>
+      <p class="text-2xl"><b>Volunteer Hub</b> is a digital platform that connects people with meaningful volunteer opportunities, making it easy to give back, 
+        track service hours, and earn recognition. We empower individuals and organizations to create real impact through inclusive, accessible,
+         and tech-enabled volunteering.</p>
+      </div>
+         
+    <!-- Illustration -->
+  </section>
+   
+
+  <!-- Features Section -->
+  <section class="bg-white text-gray-800 rounded-t-3xl px-10 lg:px-24 py-12">
+
+      <!-- Container -->
+  <div class="bg-gray-200 max-w-5xl mx-auto p-8  flex flex-col lg:flex-row items-center gap-8 rounded-2xl shadow-2xl">
+
+    <!-- Left: Image -->
+    <div class="w-full lg:w-1/2">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="w-full rounded">
+      <!-- Replace 'un-logo.png' with your actual image file -->
+    </div>
+
+    <!-- Right: Text -->
+    <div class="w-full lg:w-1/2" >
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Who we are</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        We are a passionate team committed to connecting 
+        individuals with meaningful volunteer opportunities, empowering 
+        communities through service, and recognizing volunteers with certified hour-tracking for their impact.
+        Who we are
+        We are a purpose-driven team dedicated to building bridges between passionate volunteers and impactful causes. At our core, we believe that meaningful service creates stronger communities and transforms lives — both for those who give and those who receive.
+        <br><br> Our platform was founded with the vision of simplifying the process of finding, joining, and tracking volunteer work. Whether you're an individual looking to give back, a student aiming to earn service certification hours, or an organization in need of hands-on support, we are here to connect and empower you.
+        <br><br> With features like real-time volunteer opportunity listings, intuitive sign-up tools, and hour-tracking for official certifications, we strive to make every act of service count.
+        <br><br> Together, we are building a culture of service where anyone, anywhere, can make a difference.
+       </p>
+    </div>
+    </div>
+
+    <br><br><br><br><br><br><br>
+
+      
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-10">
+      Volunteer Hub Strategic Framework 2022–2025
+    </h1>
+    </div>
+
+
+
+
+    <div class="container">
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          background-color: #f9f9f9;
+        }
+    
+        .container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+    
+        .text-content {
+          flex: 1;
+          min-width: 300px;
+          max-width: 60%;
+          padding-right: 40px;
+        }
+    
+        .text-content h2 {
+          font-size: 24px;
+          color: #333;
+        }
+    
+        .text-content p, .text-content strong {
+          font-size: 16px;
+          line-height: 1.6;
+          color: #333;
+        }
+    
+        .text-content strong {
+          display: block;
+          margin-top: 20px;
+          font-weight: bold;
+        }
+    
+        .image-content {
+          flex: 1;
+          min-width: 300px;
+          max-width: 35%;
+        }
+    
+        .image-content img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+    
+        @media (max-width: 768px) {
+          .container {
+            flex-direction: column;
+          }
+    
+          .text-content, .image-content {
+            max-width: 100%;
+            padding-right: 0;
+          }
+    
+          .text-content {
+            margin-bottom: 20px;
+          }
+        }
+      </style>
+      <div class="text-content">
+        <h2>The Volunteer Hub Strategic Framework 2022–2025</h2>
+        <p>is a comprehensive roadmap designed to guide our organization's efforts in empowering individuals, strengthening communities, and maximizing the impact of volunteerism in a rapidly changing world. This framework builds on our foundational values—service, collaboration, and innovation—and reflects our renewed commitment to driving sustainable social progress through inclusive, measurable, and digitally enabled volunteering opportunities.</p>
+  
+        <p>Over the next four years, Volunteer Hub will focus on five strategic pillars:</p>
+  
+        <strong>Access and Equity:</strong>
+        <p>We aim to reduce barriers to volunteering by ensuring that opportunities are inclusive, accessible, and equitable. This involves targeted outreach to underrepresented groups, improved accessibility features, and partnerships with local and international organizations to expand reach.</p>
+  
+        <strong>Digital Transformation:</strong>
+        <p>By leveraging technology, we are building a seamless and intuitive platform that allows volunteers to browse, track, and certify their contributions with ease. Through features like real-time matching, smart hour-tracking, and certification tools, we enhance both user experience and organizational accountability.</p>
+  
+        <strong>Capacity Building and Community Engagement:</strong>
+        <p>Volunteer Hub will invest in volunteer training, leadership development, and resource sharing to foster stronger, more resilient communities. Our community engagement model emphasizes co-creation with local stakeholders, ensuring that solutions are context-specific and community-led.</p>
+  
+        <strong>Monitoring, Evaluation, and Impact:</strong>
+        <p>We are committed to evidence-based decision-making and transparent reporting. The framework includes robust metrics for measuring social impact, volunteer satisfaction, and organizational efficiency. These insights will guide continuous improvement and amplify our collective achievements.</p>
+      </div>
+  
+      <div class="image-content">
+        <img src="{{ url_for('static', filename='6.png') }}" alt="Volunteer Hub Strategic Framework">
+      </div>
+    </div>
+
+<br><br>
+<!-- our mission -->
+<div class="max-w-4xl mx-auto text-center">
+  <h1 class="text-4xl md:text-5xl font-extrabold mb-10">
+Our Mission
+  </h1>
+  </div>
+  <div class="flex flex-col md:flex-row items-start gap-10">
+    
+    <!-- Image on the left -->
+    <div class="w-full md:w-1/3">
+      <img src="{{ url_for('static', filename='2.png') }}" alt="Volunteer Hub Strategic Framework" class="rounded-lg shadow-md w-full h-auto" />
+    </div>
+
+    <!-- Text on the right -->
+    <div class="w-full md:w-2/3 text-gray-800 space-y-4">
+      <h2 class="text-2xl font-bold text-gray-900">The Volunteer Hub Mission</h2>
+      <p>
+        At Volunteer Hub, our mission is to empower individuals and communities by connecting people to meaningful, inclusive, and impactful volunteer opportunities. 
+        We strive to foster a culture of service and civic engagement through innovative digital tools, equitable access, and strategic partnerships—ensuring that every act of volunteerism contributes to sustainable social
+         progress and collective well-being.    
+        </p>
+
+        <p> We achieve this by: <br>
+          <b>Connecting Volunteers and Causes:</b> 
+          Bridging the gap between individuals who want to give back and organizations that need their support—across health, education, environment, humanitarian aid, and more.  <br>
+          <b>Promoting Inclusivity and Accessibility:</b> 
+          Designing a platform that is barrier-free and welcoming to people from all walks of life, including marginalized groups, persons with disabilities, and underserved regions.  </p>
+          <b>Leveraging Technology for Good:</b> 
+          Using smart digital tools to match, track, and recognize volunteer contributions—making it easier for users to engage and grow while providing organizations with data-driven insights.            <br>
+          <b>Fostering Lifelong Civic Engagement:</b> 
+          Encouraging a spirit of continuous service by nurturing leadership, offering skills development, and promoting awareness about pressing social issues.          <br>
+          <b>Building Stronger Communities:</b> 
+          Supporting local and global partners in mobilizing volunteers to respond to immediate challenges and long-term development needs. <br>
+          Our mission is not just to facilitate volunteering but to ignite purpose, scale impact, and build a more compassionate and resilient society.
+        </div>
+  </div>
+
+
+
+
+
+
+
+<br><br>
+
+    <div>
+      <h3 class="text-3xl md:text-3xl font-extrabold mb-10">
+        Our Developers are:
+      </h3>
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <!-- Card 1 -->
+      <div class="flex space-x-4 items-start">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" class="w-12 h-12" alt="Avatar">
+        <div>
+          <h3 class="font-bold text-lg">Abdulkadir Sultan</h3>
+          <p class="text-sm text-gray-600">Typefaces fit your brand and personality</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="flex space-x-4 items-start">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" class="w-12 h-12" alt="Hierarchy">
+        <div>
+          <h3 class="font-bold text-lg"> Enoch Elisha</h3>
+          <p class="text-sm text-gray-600">Content is organized and prioritized effectively</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flex space-x-4 items-start">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828649.png" class="w-12 h-12" alt="Imagery">
+        <div>
+          <h3 class="font-bold text-lg"> Saater Kor </h3>
+          <p class="text-sm text-gray-600">High-quality visuals enhance the design</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="flex space-x-4 items-start">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" class="w-12 h-12" alt="Checkmark">
+        <div>
+          <h3 class="font-bold text-lg"> Arnold</h3>
+          <p class="text-sm text-gray-600">Perform aonsntently</p>
+        </div>
+      </div>
+
+       <!-- Card 5 -->
+       <div class="flex space-x-4 items-start">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" class="w-12 h-12" alt="Checkmark">
+        <div>
+          <h3 class="font-bold text-lg"> Kalid Kashim</h3>
+          <p class="text-sm text-gray-600">Perform aonsntently</p>
+        </div>
+      </div>
+
+      <!-- Rating -->
+      <div class="flex items-center space-x-1">
+        <span class="text-indigo-600 text-2xl">⭐</span>
+        <span class="text-indigo-600 text-2xl">⭐</span>
+        <span class="text-indigo-600 text-2xl">⭐</span>
+        <span class="text-indigo-600 text-2xl">⭐</span>
+        <span class="text-indigo-600 text-2xl">⭐</span>
+      </div>
+
+      
+
+    </div>
+  </section>
+
+
+
+<!-- Footer -->
+<footer class="bg-gray-300 px-6 py-12 w-full">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 text-sm">
+     <!-- ... your content remains unchanged ... -->
+    <div>
+      <h3 class="font-semibold text-lg mb-2">Cities</h3>
+      <ul class="space-y-1">
+        <li>Abuja</li>
+        <li>Lagos</li>
+        <li>Ilorin</li>
+        <li>JOS</li>
+        <li>Yola</li>
+        <li>Las Vegas</li>
+        <li>Los Angeles</li>
+        <li>Miami</li>
+        <li class="font-bold">More Cities</li>
+      </ul>
+    </div>
+
+    <!-- Top Causes -->
+    <div>
+      <h3 class="font-semibold text-lg mb-2">Top Causes</h3>
+      <ul class="space-y-1">
+        <li>Community</li>
+        <li>Children & Youth</li>
+        <li>Health & Medicine</li>
+        <li>Education & Literacy</li>
+        <li>Advocacy & Human Rights</li>
+        <li>People with Disabilities</li>
+        <li>Arts & Culture</li>
+        <li>Animals</li>
+      </ul>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <h3 class="font-semibold text-lg mb-2">Company</h3>
+      <ul class="space-y-1">
+        <li>About</li>
+        <li>Careers</li>
+        <li>Team</li>
+        <li>Press</li>
+        <li>Technology</li>
+        <li>Partners</li>
+        <li>Live Map</li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div>
+      <h3 class="font-semibold text-lg mb-2">Resources</h3>
+      <ul class="space-y-1">
+        <li>Help</li>
+        <li>Nonprofit Learning Center</li>
+        <li>Webinars</li>
+        <li>Blog - Engaging Volunteers</li>
+        <li>Contact Us</li>
+      </ul>
+     
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h3 class="font-semibold text-lg mb-2">Follow Us!</h3>
+      <hr class="mb-4 border-gray-400 w-full">
+      <div class="flex space-x-4 text-2xl text-gray-600">
+        <a href="#"><i class="fab fa-facebook-f hover:text-blue-600"></i></a>
+        <a href="#"><i class="fab fa-twitter hover:text-blue-400"></i></a>
+        <a href="#"><i class="fab fa-youtube hover:text-red-600"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in hover:text-blue-700"></i></a>
+        <a href="#"><i class="fab fa-instagram hover:text-pink-500"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<footer class="bg-white py-6 mt-0.002">
+  <div class="text-center text-gray-500">© 2025 Volunteer Hub. All rights reserved.</div>
+</footer>
+
+
+<script>
+  // Toggle dropdown menu
+  document.getElementById('userMenuButton').addEventListener('click', function(event) {
+    event.stopPropagation();
+    document.getElementById('dropdownMenu').classList.toggle('hidden');
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdownMenu');
+    const button = document.getElementById('userMenuButton');
+    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
+  // Handle logout (redirect to login page)
+  document.getElementById('logoutButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = "{{ url_for('login') }}";
+  });
+</script>
+
+</body>
+</html>
